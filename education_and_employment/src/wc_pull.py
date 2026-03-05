@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from pull_helpers import extract_columns, scrape_module_webpage
+from wc_pull_helpers import extract_columns, scrape_module_webpage
 
 extracted_data = extract_columns(
     file=Path(__file__).parent.parent / "data/modules.csv", id_col="id", field="link"

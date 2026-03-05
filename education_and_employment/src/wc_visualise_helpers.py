@@ -50,7 +50,7 @@ def generate_wordcloud(text: str, stopwords: list[str], path: "Path") -> None:
     wordcloud.generate(text)
 
     # Display the word cloud using matplotlib
-    plt.figure(figsize=(10, 5))
+    plt.figure(figsize=(20, 10))
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
     plt.savefig(path)
