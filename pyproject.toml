@@ -1,23 +1,30 @@
-[tool.poetry]
+[project]
 name = "my-life-in-data"
 version = "0.1.0"
 description = "The story of my life expressed through data visualization."
-authors = ["Ben Barlow <ben-j-barlow.1@gmail.com>"]
+authors = [{name = "Ben Barlow", email = "ben-j-barlow.1@gmail.com"}]
 readme = "README.md"
-packages = [{include = "my_life_in_data"}]
+requires-python = ">=3.9"
+dependencies = [
+    "bs4>=0.0.1",
+    "wordcloud>=1.9.2",
+    "requests>=2.31.0",
+]
 
-[tool.poetry.dependencies]
-python = "^3.9"
-bs4 = "^0.0.1"
-wordcloud = "^1.9.2"
-requests = "^2.31.0"
+[dependency-groups]
+dev = [
+    "ruff>=0.4.0",
+]
 
+[tool.ruff]
+line-length = 88
 
-[tool.poetry.group.dev.dependencies]
-black = "^23.3.0"
-isort = "^5.12.0"
-flake8 = "^6.0.0"
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.ruff.lint.isort]
+force-sort-within-sections = true
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"

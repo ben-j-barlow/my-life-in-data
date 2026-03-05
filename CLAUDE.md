@@ -9,7 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Languages and Package Management
 
 - **R** (primary): dependency management via `renv`. Restore with `renv::restore()` in R.
-- **Python**: dependency management via Poetry. Install with `poetry install`.
+- **Python**: dependency management via uv. Install with `uv sync`.
 
 ## Running the Visualizations
 
@@ -22,17 +22,16 @@ source("main.R")
 **Python — education wordcloud pipeline:**
 ```bash
 # Scrape module descriptions from the web:
-cd education_and_employment/src && poetry run python wc_pull.py
+cd education_and_employment/src && uv run python wc_pull.py
 
 # Generate the wordcloud image:
-cd education_and_employment/src && poetry run python wc_visualise_wordcloud.py
+cd education_and_employment/src && uv run python wc_visualise_wordcloud.py
 ```
 
 **Python linting:**
 ```bash
-poetry run black .
-poetry run isort .
-poetry run flake8 .
+uv run ruff format .
+uv run ruff check --fix .
 ```
 
 ## Architecture
