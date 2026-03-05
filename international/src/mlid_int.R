@@ -3,6 +3,7 @@ library(lubridate)
 library(ggplot2)
 library(tidyverse)
 library(stringr)
+library(here)
 
 source(file.path(here(), "international/src/visualise_helpers.R"))
 
@@ -25,12 +26,12 @@ produce_countries_travelled_to <- function() {
   data_pivot <- data_pivot %>%
     complete(year = 1999:year(today()), fill = list(countries_visited = 0 , country_list = ""))
   
-  data_pivot$label_position <- cumsum(data_pivot$countries_visited) + 2
+  data_pivot$label_position <- cumsum(data_pivot$countries_visited) + 2.5
   
   return(ggplot(data_pivot, aes(x = year, y = cumsum(countries_visited))) +
     geom_line() +
     geom_point() +
-    geom_text(aes(label = country_list, x = year, y = label_position), hjust = 1, vjust = 1, nudge_x = -1, nudge_y = -1.7, size = 2) +
+    geom_text(aes(label = country_list, x = year, y = label_position), hjust = 1, vjust = 1, nudge_x = -1, nudge_y = -2.3, size = 1.5) +
     labs(title = "Total Number of Countries Visited (by Year)",
          x = "Year",
          y = "Total Countries Visited"))
